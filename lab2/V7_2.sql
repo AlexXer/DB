@@ -2,8 +2,8 @@ USE AdventureWorks2012
 GO
 
 /*
-	создайте таблицу dbo.PersonPhone с такой же структурой как Person.PersonPhone,
-	не включая индексы, ограничения и триггеры;
+	РЎРѕР·РґР°Р№С‚Рµ С‚Р°Р±Р»РёС†Сѓ dbo.PersonPhone СЃ С‚Р°РєРѕР№ Р¶Рµ СЃС‚СЂСѓРєС‚СѓСЂРѕР№ РєР°Рє Person.PersonPhone,
+	РЅРµ РІРєР»СЋС‡Р°СЏ РёРЅРґРµРєСЃС‹, РѕРіСЂР°РЅРёС‡РµРЅРёСЏ Рё С‚СЂРёРіРіРµСЂС‹;
 */
 
 CREATE TABLE dbo.PersonPhone
@@ -15,8 +15,8 @@ CREATE TABLE dbo.PersonPhone
 );
 GO
 /*
-	используя инструкцию ALTER TABLE, создайте для таблицы dbo.PersonPhone составной первичный ключ
-	из полей BusinessEntityID и PhoneNumber;
+	РСЃРїРѕР»СЊР·СѓСЏ РёРЅСЃС‚СЂСѓРєС†РёСЋ ALTER TABLE, СЃРѕР·РґР°Р№С‚Рµ РґР»СЏ С‚Р°Р±Р»РёС†С‹ dbo.PersonPhone
+	СЃРѕСЃС‚Р°РІРЅРѕР№ РїРµСЂРІРёС‡РЅС‹Р№ РєР»СЋС‡ РёР· РїРѕР»РµР№ BusinessEntityID Рё PhoneNumber;
 */
 
 ALTER TABLE dbo.PersonPhone
@@ -25,8 +25,8 @@ ADD PRIMARY KEY (BusinessEntityID, PhoneNumber);
 
 
 /*
-	используя инструкцию ALTER TABLE, создайте для таблицы dbo.PersonPhone новое поле PostalCode nvarchar(15) 
-	и ограничение для этого поля, запрещающее заполнение этого поля буквами;
+	РСЃРїРѕР»СЊР·СѓСЏ РёРЅСЃС‚СЂСѓРєС†РёСЋ ALTER TABLE, СЃРѕР·РґР°Р№С‚Рµ РґР»СЏ С‚Р°Р±Р»РёС†С‹ dbo.PersonPhone РЅРѕРІРѕРµ РїРѕР»Рµ PostalCode nvarchar(15) 
+	Рё РѕРіСЂР°РЅРёС‡РµРЅРёРµ РґР»СЏ СЌС‚РѕРіРѕ РїРѕР»СЏ, Р·Р°РїСЂРµС‰Р°СЋС‰РµРµ Р·Р°РїРѕР»РЅРµРЅРёРµ СЌС‚РѕРіРѕ РїРѕР»СЏ Р±СѓРєРІР°РјРё;
 */
 
 ALTER TABLE dbo.PersonPhone
@@ -34,8 +34,8 @@ ADD PostalCode NVARCHAR(15)
 CHECK (PATINDEX('%[^A-Za-z]%', PostalCode) <> 0);
 
 /*
-	используя инструкцию ALTER TABLE, 
-	создайте для таблицы dbo.PersonPhone ограничение DEFAULT для поля PostalCode, задайте значение по умолчанию ‘0’;
+	РСЃРїРѕР»СЊР·СѓСЏ РёРЅСЃС‚СЂСѓРєС†РёСЋ ALTER TABLE, 
+	СЃРѕР·РґР°Р№С‚Рµ РґР»СЏ С‚Р°Р±Р»РёС†С‹ dbo.PersonPhone РѕРіСЂР°РЅРёС‡РµРЅРёРµ DEFAULT РґР»СЏ РїРѕР»СЏ PostalCode, Р·Р°РґР°Р№С‚Рµ Р·РЅР°С‡РµРЅРёРµ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ0вЂ™;
 */
 
 
@@ -46,8 +46,8 @@ DEFAULT '0' FOR PostalCode
 
 
 /* 
-	заполните новую таблицу данными из Person.PersonPhone,
-	только контактами с типом ‘Cell’ из таблицы PhoneNumberType;
+	Р—Р°РїРѕР»РЅРёС‚Рµ РЅРѕРІСѓСЋ С‚Р°Р±Р»РёС†Сѓ РґР°РЅРЅС‹РјРё РёР· Person.PersonPhone,
+	С‚РѕР»СЊРєРѕ РєРѕРЅС‚Р°РєС‚Р°РјРё СЃ С‚РёРїРѕРј вЂCellвЂ™ РёР· С‚Р°Р±Р»РёС†С‹ PhoneNumberType;
 */
 INSERT INTO dbo.PersonPhone(BusinessEntityID,PhoneNumber,PhoneNumberTypeID, ModifiedDate)
 SELECT
@@ -67,7 +67,7 @@ FROM dbo.PersonPhone
 
 
 /*
-	измените тип поля PhoneNumberTypeID на bigint и допускающим NULL значения.
+	РР·РјРµРЅРёС‚Рµ С‚РёРї РїРѕР»СЏ PhoneNumberTypeID РЅР° bigint Рё РґРѕРїСѓСЃРєР°СЋС‰РёРј NULL Р·РЅР°С‡РµРЅРёСЏ.
 */
 
 

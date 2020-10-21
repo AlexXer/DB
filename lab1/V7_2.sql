@@ -2,21 +2,20 @@ USE AdventureWorks2012
 GO
 
 /*
-	Вывести на экран количество отделов, которые входят в группу ‘Executive General and Administration’.
+	Р’С‹РІРµСЃС‚Рё РЅР° СЌРєСЂР°РЅ РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РґРµР»РѕРІ, РєРѕС‚РѕСЂС‹Рµ РІС…РѕРґСЏС‚ РІ РіСЂСѓРїРїСѓ вЂExecutive General and AdministrationвЂ™.
 */
 
 SELECT COUNT(*) AS DepartmentCount FROM HumanResources.Department  WHERE GroupName = 'Executive General and Administration' 
 
 /*
-	Вывести на экран 5(пять) самых молодых сотрудников.
+	Р’С‹РІРµСЃС‚Рё РЅР° СЌРєСЂР°РЅ 5(РїСЏС‚СЊ) СЃР°РјС‹С… РјРѕР»РѕРґС‹С… СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ.
 */
 
 
 SELECT TOP(5) BusinessEntityID, JobTitle, Gender, BirthDate FROM HumanResources.Employee ORDER BY BirthDate DESC
 
 /*
-	Вывести на экран список сотрудников женского пола, принятых на работу во вторник (Tuesday). В поле [LoginID] заменить домен ‘adventure-works’ на ‘adventure-works2012’
-*/
+	Р’С‹РІРµСЃС‚Рё РЅР° СЌРєСЂР°РЅ СЃРїРёСЃРѕРє СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ Р¶РµРЅСЃРєРѕРіРѕ РїРѕР»Р°, РїСЂРёРЅСЏС‚С‹С… РЅР° СЂР°Р±РѕС‚Сѓ РІРѕ РІС‚РѕСЂРЅРёРє (Tuesday). Р’ РїРѕР»Рµ [LoginID] Р·Р°РјРµРЅРёС‚СЊ РґРѕРјРµРЅ вЂadventure-worksвЂ™ РЅР° вЂadventure-works2012вЂ™
 
 
 SELECT BusinessEntityID,JobTitle,Gender,HireDate,REPLACE(LoginID,'adventure-works', 'adventure-works2012') FROM HumanResources.Employee WHERE Gender = 'F' AND DATEPART(WEEKDAY,HireDate)='2' 
